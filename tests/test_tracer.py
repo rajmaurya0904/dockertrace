@@ -14,3 +14,15 @@ def test_trace_build_includes_files_key() -> None:
     assert isinstance(result, dict)
     assert "files" in result
     assert isinstance(result["files"], list)
+
+
+def test_trace_build_includes_hosts_key() -> None:
+    result = trace_build(".")
+    assert "hosts" in result
+    assert isinstance(result["hosts"], list)
+
+
+def test_trace_build_includes_dockerignore_key() -> None:
+    result = trace_build(".")
+    assert "dockerignore" in result
+    assert isinstance(result["dockerignore"], list)
