@@ -1,12 +1,17 @@
-# Dockertrace
+# dockertrace
 
-**A diagnostic CLI tool that traces container filesystem and network calls during build time to generate minimal `.dockerignore` and multi-stage configurations.**
+**A diagnostic tool that traces container filesystem and network activity during Docker builds to generate minimal `.dockerignore` files and multi-stage configurations.**
 
-<!-- THE PROBLEM: 2-3 concrete lines on the annoying thing this removes. -->
+Bloated build contexts cause slow Docker builds, pushing gigabytes of unnecessary source files, node_modules, and virtual environments to daemon sockets. Writing `.dockerignore` files manually is tedious, error-prone, and often leaves out hidden cache directories or build artifacts.
 
 ## Example
 
-<!-- A real command and its REAL pasted output. Run it first. -->
+Running `dockertrace` on a sample repository:
+
+```bash
+$ python -c "import dockertrace.tracer; print(dockertrace.tracer.trace_build('.'))"
+{}
+```
 
 ## Install
 
@@ -16,15 +21,18 @@ pip install -e ".[dev]"
 
 ## Usage
 
-<!-- The 2-4 commands people actually need, one line each. -->
+- `python -c "import dockertrace.tracer; print(dockertrace.tracer.trace_build('.'))"`: Run core build trace stub on target directory.
 
 ## How it works
 
-<!-- 3-6 bullets: what it checks, computes or produces. -->
+- Inspects build directory path for project structure.
+- Prepares stub data structures for build tracing.
+- Returns empty dictionary placeholder for container build traces.
 
 ## Limitations
 
-<!-- Honest and short: what it does NOT do, known gaps. -->
+- Currently only provides a stub function (`trace_build`) returning an empty dictionary.
+- Does not yet execute or intercept container build systems or kernel calls.
 
 ## Development
 
