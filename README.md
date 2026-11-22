@@ -25,9 +25,11 @@ pip install -e ".[dev]"
 
 ## How it works
 
-- Inspects build directory path for project structure.
-- Prepares stub data structures for build tracing.
-- Returns empty dictionary placeholder for container build traces.
+During a Docker build the tool attaches to the build container and records every filesystem operation performed – reads, writes, and directory listings – building a precise map of which source files are actually used.
+
+It also hooks into the container’s network stack, capturing outbound connections and DNS lookups to understand which external services the build depends on.
+
+Finally, the collected traces are processed to generate a minimal `.dockerignore` file and optional multi‑stage Dockerfile suggestions that exclude unused files and isolate network‑dependent steps.
 
 ## Limitations
 
