@@ -4,7 +4,7 @@
 
 Bloated build contexts cause slow Docker builds, pushing gigabytes of unnecessary source files, node_modules, and virtual environments to daemon sockets. Writing `.dockerignore` files manually is tedious, error-prone, and often leaves out hidden cache directories or build artifacts.
 
-## Example
+## Worked Example
 
 Running `dockertrace` on a sample repository:
 
